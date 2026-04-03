@@ -2,25 +2,26 @@
 
 A small GPT-style transformer built from scratch in PyTorch, trained on the writings of Maimonides.
 
-The model learns to generate text in the style of the *Guide for the Perplexed* and *Mishneh Torah*.
+The model learns to generate text in the style of the *Guide for the Perplexed* and *Mishneh Torah* — not coherent philosophy, but text that captures the vocabulary, rhythm, and structure of medieval Jewish philosophical writing.
 
+**This is a learning project.** Every component — tokenizer, embeddings, self-attention, multi-head attention, transformer blocks, training loop — is written from scratch to understand how transformer language models actually work under the hood.
 
 ## Sample Output
 
-Prompt: *"The prophet spoke"*
+Prompt: *"It is known that"*
 
-> The prophet spoke in the section of the spheres, which is not individual find it is endowed by the stars, and the other who God in the true of the same sense of the existence of the existence of the spheres, the following of the creature should be contradict in the second of the Metaphysics...
+> It is known that the Universe is governed after the reverse, as is distinctly stated. For it is the case with the words, For the Lord thy God which was the mighty people (Josh. v. 13). In fact, however, they must suffice to destroy the word of God, and to sacrifice of the stars in his seven species similar to that
 
 ## Architecture
 
 | Component | Detail |
 |---|---|
 | Type | Decoder-only transformer (GPT-style) |
-| Parameters | ~827K |
-| Embedding dim | 128 |
-| Attention heads | 4 |
-| Layers | 4 |
-| Context window | 128 characters |
+| Parameters | ~4.8M (GPU) / ~827K (CPU) |
+| Embedding dim | 256 (GPU) / 128 (CPU) |
+| Attention heads | 8 (GPU) / 4 (CPU) |
+| Layers | 6 (GPU) / 4 (CPU) |
+| Context window | 256 (GPU) / 128 (CPU) characters |
 | Tokenizer | Character-level |
 | Training corpus | ~1.7M characters of Maimonides |
 
@@ -90,9 +91,7 @@ The model was trained on ~1.7 million characters from two public domain sources:
 
 Local training (5K steps, CPU): loss drops from ~4.98 to ~1.22 in about 6 minutes. The model learns Maimonides-specific vocabulary and sentence patterns but produces semi-coherent output.
 
-For better results, use the Colab notebook (`notebooks/train_colab.ipynb`) which trains with larger hyperparameters on a free GPU.
-
-
+GPU training (10K steps, Colab T4): loss drops from ~4.41 to ~0.64. The larger model learns to cite biblical verses, reference Aristotle and the Mutakallemim, and construct multi-clause philosophical sentences in Maimonides' style. Use the Colab notebook (`notebooks/train_colab.ipynb`) to reproduce.
 
 ## Data Sources
 
