@@ -2,9 +2,8 @@
 
 A small GPT-style transformer built from scratch in PyTorch, trained on the writings of Maimonides.
 
-The model learns to generate text in the style of the *Guide for the Perplexed* and *Mishneh Torah* — not coherent philosophy, but text that captures the vocabulary, rhythm, and structure of medieval Jewish philosophical writing.
+The model learns to generate text in the style of the *Guide for the Perplexed* and *Mishneh Torah*.
 
-**This is a learning project.** Every component — tokenizer, embeddings, self-attention, multi-head attention, transformer blocks, training loop — is written from scratch to understand how transformer language models actually work under the hood.
 
 ## Sample Output
 
