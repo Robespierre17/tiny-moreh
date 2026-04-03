@@ -93,20 +93,7 @@ Local training (5K steps, CPU): loss drops from ~4.98 to ~1.22 in about 6 minute
 
 For better results, use the Colab notebook (`notebooks/train_colab.ipynb`) which trains with larger hyperparameters on a free GPU.
 
-## What I Learned
 
-Building this from scratch taught me:
-- **How attention actually works** — the Q/K/V mechanism isn't magic, it's learned dot-product similarity that lets tokens route information to each other
-- **Why residual connections matter** — without them, gradients vanish in deep networks and training stalls
-- **The role of layer normalization** — keeps activations stable so learning rates don't need to be impossibly small
-- **How next-token prediction works** — the entire training signal is just "given these characters, predict the next one," and that's enough to learn language structure
-- **Temperature's effect on generation** — it controls the entropy of the sampling distribution, trading coherence for creativity
-
-## Part of a Three-Project Arc
-
-1. ✅ [doc-qa-agent](https://github.com/Robespierre17/doc-qa-agent) — RAG-powered document QA with semantic search, tool-calling agent, and FastAPI deployment
-2. ✅ **tiny-moreh** (this project) — Transformer built from scratch in PyTorch
-3. 🔜 Fine-tune a small open-source model on a domain-specific dataset
 
 ## Data Sources
 
