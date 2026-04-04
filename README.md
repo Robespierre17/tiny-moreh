@@ -1,4 +1,4 @@
-# TinyMoreh
+# TinyRambam
 
 A small GPT-style transformer built from scratch in PyTorch, trained on the writings of Maimonides.
 
@@ -38,7 +38,7 @@ The full pipeline: character → integer token → embedding vector + positional
 ## Project Structure
 
 ```
-tiny-moreh/
+tiny-rambam/
 ├── data/
 │   └── download_data.py     # Downloads Maimonides texts
 ├── src/
@@ -47,7 +47,7 @@ tiny-moreh/
 │   ├── attention.py         # Single-head self-attention (Q/K/V)
 │   ├── multihead.py         # Multi-head attention
 │   ├── block.py             # Transformer block (attn + FF + residuals)
-│   ├── model.py             # Full TinyMoreh model
+│   ├── model.py             # Full TinyRambam model
 │   ├── train.py             # Training loop
 │   └── generate.py          # Text generation script
 ├── notebooks/
@@ -62,8 +62,8 @@ tiny-moreh/
 
 ```bash
 # Clone and setup
-git clone https://github.com/Robespierre17/tiny-moreh.git
-cd tiny-moreh
+git clone https://github.com/Robespierre17/tiny-rambam.git
+cd tiny-rambam
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt

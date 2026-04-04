@@ -1,5 +1,5 @@
 """
-Generate text from a trained TinyMoreh model.
+Generate text from a trained TinyRambam model.
 
 USAGE:
     python src/generate.py                              # random start
@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import argparse
 import torch
-from model import TinyMoreh
+from model import TinyRambam
 
 
 def load_model(checkpoint_path: str, device: str = "cpu"):
@@ -27,7 +27,7 @@ def load_model(checkpoint_path: str, device: str = "cpu"):
     stoi = checkpoint["stoi"]
     itos = checkpoint["itos"]
 
-    model = TinyMoreh(
+    model = TinyRambam(
         vocab_size=vocab_size,
         d_model=config["d_model"],
         num_heads=config["num_heads"],
@@ -43,7 +43,7 @@ def load_model(checkpoint_path: str, device: str = "cpu"):
 
 
 def generate(
-    model: TinyMoreh,
+    model: TinyRambam,
     stoi: dict,
     itos: dict,
     prompt: str = "",
@@ -67,7 +67,7 @@ def generate(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate text from TinyMoreh")
+    parser = argparse.ArgumentParser(description="Generate text from TinyRambam")
     parser.add_argument("--prompt", type=str, default="", help="Starting text")
     parser.add_argument("--tokens", type=int, default=300, help="Tokens to generate")
     parser.add_argument("--temperature", type=float, default=0.8, help="Sampling temperature (0.1=conservative, 1.5=creative)")
@@ -80,7 +80,7 @@ def main():
     if args.checkpoint:
         ckpt_path = args.checkpoint
     else:
-        ckpt_path = os.path.join(os.path.dirname(__file__), "..", "checkpoints", "tiny_moreh.pt")
+        ckpt_path = os.path.join(os.path.dirname(__file__), "..", "checkpoints", "tiny_rambam.pt")
 
     if not os.path.exists(ckpt_path):
         print(f"No checkpoint found at {ckpt_path}")

@@ -32,7 +32,7 @@ from embeddings import TransformerInput
 from block import TransformerBlock
 
 
-class TinyMoreh(nn.Module):
+class TinyRambam(nn.Module):
     """
     A small GPT-style language model trained on Maimonides.
 
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     block_size = 128
     batch_size = 4
 
-    model = TinyMoreh(
+    model = TinyRambam(
         vocab_size=vocab_size,
         d_model=d_model,
         num_heads=num_heads,

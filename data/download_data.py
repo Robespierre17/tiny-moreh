@@ -47,7 +47,7 @@ def download_guide_for_perplexed() -> str:
     print("Downloading Guide for the Perplexed from Project Gutenberg...")
     url = "https://www.gutenberg.org/cache/epub/73584/pg73584.txt"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "TinyMoreh/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "TinyRambam/1.0"})
         with urllib.request.urlopen(req) as response:
             text = response.read().decode("utf-8")
         text = clean_gutenberg_text(text)
@@ -58,7 +58,7 @@ def download_guide_for_perplexed() -> str:
         # Try alternate URL
         try:
             alt_url = "https://www.gutenberg.org/files/73584/73584-0.txt"
-            req = urllib.request.Request(alt_url, headers={"User-Agent": "TinyMoreh/1.0"})
+            req = urllib.request.Request(alt_url, headers={"User-Agent": "TinyRambam/1.0"})
             with urllib.request.urlopen(req) as response:
                 text = response.read().decode("utf-8")
             text = clean_gutenberg_text(text)
@@ -74,7 +74,7 @@ def download_sefaria_text(ref: str, pause: float = 0.5) -> str:
     encoded_ref = urllib.parse.quote(ref)
     url = f"https://www.sefaria.org/api/texts/{encoded_ref}?lang=en"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "TinyMoreh/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "TinyRambam/1.0"})
         with urllib.request.urlopen(req) as response:
             data = json.loads(response.read().decode("utf-8"))
 

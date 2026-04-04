@@ -26,7 +26,7 @@ import argparse
 import time
 import torch
 from data import load_corpus, prepare_data, get_batch
-from model import TinyMoreh
+from model import TinyRambam
 
 
 # ----- Hyperparameters -----
@@ -55,7 +55,7 @@ CONFIG = {
 
 
 def estimate_loss(
-    model: TinyMoreh,
+    model: TinyRambam,
     train_data: torch.Tensor,
     val_data: torch.Tensor,
     config: dict,
@@ -82,7 +82,7 @@ def estimate_loss(
     return losses
 
 
-def generate_sample(model: TinyMoreh, tokenizer, device: str, num_tokens: int = 200):
+def generate_sample(model: TinyRambam, tokenizer, device: str, num_tokens: int = 200):
     """Generate a text sample from the model."""
     model.eval()
     start = torch.zeros((1, 1), dtype=torch.long, device=device)
@@ -110,7 +110,7 @@ def train(device: str = "cpu"):
     val_data = val_data.to(device)
 
     # Create model
-    model = TinyMoreh(
+    model = TinyRambam(
         vocab_size=tokenizer.vocab_size,
         d_model=CONFIG["d_model"],
         num_heads=CONFIG["num_heads"],
@@ -181,7 +181,7 @@ def train(device: str = "cpu"):
     # Save model
     save_dir = os.path.join(os.path.dirname(__file__), "..", "checkpoints")
     os.makedirs(save_dir, exist_ok=True)
-    save_path = os.path.join(save_dir, "tiny_moreh.pt")
+    save_path = os.path.join(save_dir, "tiny_rambam.pt")
     torch.save({
         "model_state_dict": model.state_dict(),
         "config": CONFIG,
